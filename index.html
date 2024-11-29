@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="main.js"></script>
+    <title>this is scaduel web shit</title>
+</head>
+<body>
+    <nav>
+        <h2>
+            this is scaduel shit
+        </h2>
+    </nav>
+    <main>
+        <section id="add-view" class="add-view">
+            <div>
+                <input type="text" placeholder="enter your scaduel here" id="scad-input">
+                <button id="scad-btn" class="scad-btn">Add</button>
+            </div>
+        </section>
+        <section id="scad-view" class="scad-view">
+        </section>
+    </main>
+    <footer>
+        <h4 style="font-weight: 300;">
+            this is a scad shit app have rights dont copy this shit
+        </h4>
+    </footer>
+    <style>
+        *{
+            padding: 0;
+            margin:0 ;
+        }
+        body{
+            background-color: rgb(231, 231, 231);
+        }
+        html{
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif ;
+        }
+        nav{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            width: 100vw;
+            background-color: black;
+            color: white;
+            text-align: center;
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            box-shadow: 1px 5px 2px gray;
+
+        }
+        main{
+            margin-top: 15vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 90vh;
+            width: 100vw;
+            z-index: 1;
+        }
+        #add-view{
+            display: flex;
+            height: 10vh;
+            width: 100vw;
+            flex-direction: row;
+            justify-content: center;
+            align-items: start; 
+        }
+
+        #scad-view{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+            overflow-y: auto;
+            padding: 10px;
+            align-items: center;
+            height: 50vh;
+            width: 90vw;
+            border-radius: 10px;
+            background-color: black;
+        }
+        #scad-input{
+            height: 10vh;
+            width: 60vw;
+            text-align: center;
+            border-radius: 10px;
+            border-width: 1px;
+            font-size:large;
+            font-weight: 400;
+            box-shadow: 1px 5px 2px gray;
+        }
+        .new-div{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 10px;
+            height: 20vh;
+            width: 80vw;
+            border-radius: 10px;
+            border-width: 1px;
+            font-size: large;
+            font-weight: 400;
+            background-color: blue;
+            color: white;
+            margin: 10px;
+        }
+        #scad-btn{
+            height: 10vh;
+            width: 20vw;
+            border-radius: 10px;
+            border-width: 1px;
+            box-shadow: 1px 5px 2px gray;
+            font-size: large;
+            font-weight: 400;
+            background-color: blue;
+            color: white;
+        }
+        .btn{
+            font-size: 16px;
+            padding: 5px 10px;
+            height: 10vh;
+            width: 15vw;
+            border-radius: 10px;
+            border-width: 1px;
+            font-size: large;
+            font-weight: 400;
+            background-color: black;
+            color: white;
+        }
+        footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 10vh;
+            width: 100vw;
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <script>
+        const view = document.getElementById("scad-view");
+        const button = document.getElementById(`scad-btn`);
+        button.addEventListener("click", ()=>{
+            const input = document.getElementById("scad-input").value;
+            if (input.trim()=== "") {
+                alert("please enter something");
+                return;
+            }
+          const newDiv = document.createElement("div");
+           newDiv.classList.add("new-div");
+           const textSpan = document.createElement("span");
+           textSpan.textContent = input;
+           textSpan.style.textAlign = "start";
+        //    textSpan.style.width = "100%"; this to assure the span width size
+
+           const doneButton = document.createElement("button");
+           doneButton.textContent = "Done";
+           doneButton.classList.add("btn");
+           doneButton.addEventListener("click",()=>{
+            textSpan.style.textDecoration = textSpan.style.textDecoration === 'line-through'?'none':'line-through';
+           });
+           const deleteButton = document.createElement("button");
+           deleteButton.textContent= "Remove";
+           deleteButton.classList.add("btn");
+           deleteButton.addEventListener("click",()=>{
+            view.removeChild(newDiv);
+           });
+           view.appendChild(newDiv);
+           newDiv.appendChild(textSpan);
+           newDiv.appendChild(doneButton);
+           newDiv.appendChild(deleteButton);
+           view.appendChild(newDiv);
+        })
+        
+    </script>
+</body>
+</html>
